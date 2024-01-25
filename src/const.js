@@ -1,0 +1,3 @@
+export const PRODUCTREQ = "PRODUCTREQ"
+export const PRODUCTSUC = "PRODUCTSUC"
+export const PRODUCTREJ = "PRODUCTREJ"
