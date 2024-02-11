@@ -1,9 +1,14 @@
 import { Badge, Button } from "react-bootstrap";
 import { FaSearch, FaUser } from "react-icons/fa";
 import { GrCart } from "react-icons/gr";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+
+    const cartproduct = useSelector(state => state.ProductReducer.cartproducts)
+
+    console.log(cartproduct,"cartproduct");
 
     return (
 
@@ -107,7 +112,7 @@ const Header = () => {
                                         </li>
                                         <li>
                                             <NavLink to="/CartList" className="text-dark" >
-                                                <GrCart /><Badge bg="secondary">0</Badge>
+                                                <GrCart /><Badge bg="secondary">{cartproduct.length}</Badge>
                                                 <span className="visually-hidden">unread messages</span>
                                             </NavLink>
                                         </li>

@@ -21,6 +21,37 @@ export const PRODUCTReq = () =>{
     }
   }
 
+  export const addcart = (id,data,index) => {
+
+ console.log(data,"dataaction");
+    return{
+        type : 'ADD_CART',
+        payload : {id,data,index}
+    }
+    
+}
+
+export const productremove = (id) => {
+  return{
+      type : 'REMOVE_CART',
+      payload : id
+  }
+}
+
+export const increment = (id) => {
+  return{
+      type : 'INC',
+      payload : id
+  }
+}
+
+export const decrement = (id) => {
+  return{
+      type : 'DEC',
+      payload : id
+  }
+}
+
 
 export const Productadmin = (productData) => {
     return async dispatch => {

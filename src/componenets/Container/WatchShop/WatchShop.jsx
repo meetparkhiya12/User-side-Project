@@ -2,11 +2,17 @@ import { useEffect } from "react";
 import { MdOutlineLockOpen } from "react-icons/md";
 import { TfiPackage, TfiReload } from "react-icons/tfi";
 import { useDispatch, useSelector } from "react-redux";
-import { dataGet } from "../../../Service/Action/product.action";
+import { addcart, dataGet } from "../../../Service/Action/product.action";
 
 const WatchShop = () => {
     const dispatch = useDispatch();
     const { products } = useSelector(state => state.ProductReducer);
+
+    const handleproduct = (id, data,index) => {
+console.log(data);
+		dispatch(addcart(id, data,index))
+
+	}
 
     useEffect(() => {
         dispatch(dataGet());
@@ -30,7 +36,7 @@ const WatchShop = () => {
             <div className="py-100">
                 <div className="container">
                     <div className="row">
-                        {products.map((pro) => (
+                        {products.map((pro,index) => (
                             <div key={pro.id} className="col-md-3 mb-4">
                                 <div className="card border-none">
                                     <a href="#" className="products-img mb-4">
@@ -45,7 +51,7 @@ const WatchShop = () => {
                                         </div>
                                     </div>
                                     <div className="cart-button text-center mt-3">
-                                        <button className="btn btn-primary mb-3" >
+                                        <button className="btn btn-primary mb-3" onClick={() => handleproduct(pro.id, pro, index)}>
                                             Add to Cart
                                         </button>
                                     </div>
